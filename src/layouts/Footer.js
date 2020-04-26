@@ -1,8 +1,35 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import '../styles/Footer.css';
 
 const Footer = () => {
     return (
-        <h2>Footer</h2>
+        <div>
+
+            <h2>Stopka</h2>
+
+            <Route path="/" exact render={(props) => {
+                return (
+                    <p>Jesteś na <span>stronie głównej</span></p>
+                )
+            }} />
+
+            <Route path="/:page" exact render={(props) => {
+                return (
+                    <p>Jesteś na podstronie <span>{props.match.params.page}</span></p>
+                )
+            }} />
+
+            <Route path="/:page/:idProduct" exact render={(props) => {
+                return (
+                    <>
+                        <p>Jesteś na podstronie <span>{props.match.params.page}</span></p>
+                        <p>w kategorii <span>{props.match.params.idProduct}</span></p>
+                    </>
+                )
+            }} />
+
+        </div>
     );
 };
 
